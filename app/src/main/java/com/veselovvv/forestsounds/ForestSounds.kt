@@ -28,9 +28,7 @@ class ForestSounds(private val assets: AssetManager) {
     }
 
     // Функция освобождения SoundPool:
-    fun release() {
-        soundPool.release()
-    }
+    fun release() { soundPool.release() }
 
     private fun loadSounds(): List<Sound> {
 

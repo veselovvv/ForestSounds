@@ -25,15 +25,13 @@ class MainActivity : AppCompatActivity() {
         // Настройка RecyclerView:
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
-            // Подключение SoundAdapter:
             adapter = SoundAdapter(forestSounds.sounds)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Освобождение SoundPool:
-        forestSounds.release()
+        forestSounds.release() // освобождение SoundPool
     }
 
     // Объект SoundHolder, связанный с list_item.xml:
