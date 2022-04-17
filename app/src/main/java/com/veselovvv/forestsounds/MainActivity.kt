@@ -10,12 +10,10 @@ import com.veselovvv.forestsounds.databinding.ActivityMainBinding
 import com.veselovvv.forestsounds.databinding.ListItemBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var forestSounds: ForestSounds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         forestSounds = ForestSounds(assets)
 
         // Привязка:
@@ -62,7 +60,6 @@ class MainActivity : AppCompatActivity() {
                 parent,
                 false
             )
-
             return SoundHolder(binding)
         }
 

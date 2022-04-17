@@ -4,9 +4,8 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 
 class SoundViewModel(private val forestSounds: ForestSounds) : BaseObservable() {
-
-    fun onButtonClicked() {
-        sound?.let { forestSounds.play(it) }
+    fun onButtonClicked() = sound?.let {
+        forestSounds.play(it)
     }
 
     var sound: Sound? = null

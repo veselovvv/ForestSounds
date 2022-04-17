@@ -10,7 +10,6 @@ private const val SOUNDS_FOLDER = "sounds"
 private const val MAX_SOUNDS_NUMBER = 4
 
 class ForestSounds(private val assets: AssetManager) {
-
     val sounds: List<Sound>
 
     // SoundPool для управления звуками:
@@ -31,7 +30,6 @@ class ForestSounds(private val assets: AssetManager) {
     fun release() { soundPool.release() }
 
     private fun loadSounds(): List<Sound> {
-
         val soundNames: Array<String>
 
         try {
@@ -53,7 +51,6 @@ class ForestSounds(private val assets: AssetManager) {
                 Log.e("ForestSounds", "$name loading is failed", ioe)
             }
         }
-
         return sounds
     }
 
