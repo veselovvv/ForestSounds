@@ -6,9 +6,6 @@ import android.media.SoundPool
 import android.util.Log
 import java.io.IOException
 
-private const val SOUNDS_FOLDER = "sounds"
-private const val MAX_SOUNDS_NUMBER = 4
-
 class ForestSounds(private val assets: AssetManager) {
     val sounds: List<Sound>
 
@@ -59,5 +56,10 @@ class ForestSounds(private val assets: AssetManager) {
         val assetFileDescriptor: AssetFileDescriptor = assets.openFd(sound.assetPath)
         val id = soundPool.load(assetFileDescriptor, 1)
         sound.id = id
+    }
+
+    companion object {
+        private const val SOUNDS_FOLDER = "sounds"
+        private const val MAX_SOUNDS_NUMBER = 4
     }
 }
