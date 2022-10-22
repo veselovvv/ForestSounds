@@ -8,7 +8,6 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 class SoundViewModelTest {
-
     private lateinit var forestSounds: ForestSounds
     private lateinit var sound: Sound
     private lateinit var testSubject: SoundViewModel

@@ -1,13 +1,12 @@
 package com.veselovvv.forestsounds
 
-import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
 import java.io.IOException
 
 class ForestSounds(private val assets: AssetManager) {
-    val sounds: List<Sound>
+    private val sounds: List<Sound>
 
     // SoundPool для управления звуками:
     private val soundPool = SoundPool.Builder().setMaxStreams(MAX_SOUNDS_NUMBER).build()
@@ -24,9 +23,11 @@ class ForestSounds(private val assets: AssetManager) {
     }
 
     // Функция освобождения SoundPool:
-    fun release() { soundPool.release() }
+    fun release() = soundPool.release()
 
-    private fun loadSounds(): List<Sound> {
+    fun getSounds() = sounds
+
+    fun loadSounds(): List<Sound> {
         val soundNames: Array<String>
 
         try {
@@ -42,20 +43,15 @@ class ForestSounds(private val assets: AssetManager) {
             val sound = Sound(assetPath)
 
             try {
-                load(sound)
+                // Загрузка Sound в SoundPool:
+                val assetFileDescriptor = assets.openFd(sound.assetPath)
+                sound.id = soundPool.load(assetFileDescriptor, 1)
                 sounds.add(sound)
             } catch (ioe: IOException) {
                 Log.e("ForestSounds", "$name loading is failed", ioe)
             }
         }
         return sounds
-    }
-
-    // Загрузка Sound в SoundPool:
-    private fun load(sound: Sound) {
-        val assetFileDescriptor: AssetFileDescriptor = assets.openFd(sound.assetPath)
-        val id = soundPool.load(assetFileDescriptor, 1)
-        sound.id = id
     }
 
     companion object {

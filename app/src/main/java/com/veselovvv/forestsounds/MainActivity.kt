@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         // Настройка RecyclerView:
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
-            adapter = SoundAdapter(forestSounds.sounds)
+            adapter = SoundAdapter(forestSounds.getSounds())
         }
     }
 
